@@ -1,1 +1,46 @@
+<text>Enter name</text><br>
+<input id="name"><br>
+<text>Enter age</text><br>
+<input id="age"><br>
+<text>Select gender</text><br>
+<div id="gender">
+    <input type="radio" id="gender1" name="genders" value="Female">
+    <label for="gender1">Female</label><br>
+    <input type="radio" id="gender2" name="genders" value="Male">
+    <label for="gender2">Male</label><br>
+</div>
+<text>Enter course</text><br>
+<input id="course"><br>
+<text>Enter E-mail</text><br>
+<input id="email"><br>
+<button onclick="save()">Save</button>
 
+<ul id="listitems">
+    <li>
+        Hello
+        <button onclick="deleteitem(event)">Delete</button>
+    </li>
+</ul>
+
+<script>
+    function save() {
+        // Get the values only when the button is clicked
+        var fullname = document.getElementById("name").value;
+        var agee = document.getElementById("age").value;
+        var genderfinal = document.querySelector('input[name="genders"]:checked') ? document.querySelector('input[name="genders"]:checked').value : '';
+        var course = document.getElementById("course").value;
+        var email = document.getElementById("email").value;
+
+        // Create the new list item
+        var ul = document.getElementById("listitems");
+        var list = document.createElement("li");
+        list.innerHTML = fullname + " " + agee + " " + genderfinal + " " + course + " " + email + "<button onclick='deleteitem(event)'>Delete</button>";
+        
+        // Append the new list item to the list
+        ul.append(list);
+    }
+
+    function deleteitem(event) {
+        event.target.parentElement.remove();
+    }
+</script>
